@@ -44,24 +44,24 @@
                     <div class="progress-bar">
                         <div class="progress-fill" id="storage-fill" style="width: 0%"></div>
                     </div>
-                    <div class="storage-detail" id="storage-detail">Calculating...</div>
-                    <div class="storage-detail" id="storage-remaining"
-                        style="font-weight: 600; color: var(--primary); margin-top: 4px;">Remaining: 5 GB</div>
+                    <div class="storage-detail" id="storage-detail">0 Bytes of 5 GB used</div>
                 </div>
 
                 <div class="user-profile">
-                    <div class="avatar">U</div>
+                    <div class="avatar" id="user-avatar">U</div>
                     <div class="user-info">
-                        <span class="name">User</span>
-                        <span class="role">Admin</span>
+                        <span class="name" id="user-name">User</span>
+                        <span class="role">Member</span>
                     </div>
-                    <button class="icon-btn" id="drive-connect-btn" onclick="connectGoogleDrive()"
-                        title="Connect Google Drive" style="display: none; color: #34d399;">
-                        <i class="fa-brands fa-google-drive"></i>
-                    </button>
-                    <button class="icon-btn logout-btn" onclick="logout()" title="Logout">
-                        <i class="fa-solid fa-right-from-bracket"></i>
-                    </button>
+                    <div class="user-actions">
+                        <button class="icon-btn" id="drive-connect-btn" onclick="connectGoogleDrive()"
+                            title="Connect Google Drive" style="display: none; color: #34d399;">
+                            <i class="fa-brands fa-google-drive"></i>
+                        </button>
+                        <button class="icon-btn logout-btn" onclick="logout()" title="Logout">
+                            <i class="fa-solid fa-right-from-bracket"></i>
+                        </button>
+                    </div>
                 </div>
         </aside>
 
