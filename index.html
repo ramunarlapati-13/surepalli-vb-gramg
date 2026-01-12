@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DocuFlow - Organize Your World</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar glass-panel">
+            <div class="logo">
+                <i class="fa-solid fa-layer-group"></i>
+                <span>DocuFlow</span>
+            </div>
+            
+            <nav class="nav-menu">
+                <button class="nav-item active" data-category="all">
+                    <i class="fa-solid fa-grid-2"></i>
+                    <span>All Documents</span>
+                </button>
+                <div class="nav-section-title">Categories</div>
+                <div id="category-list">
+                    <!-- Categories will be injected here -->
+                </div>
+                <button class="nav-item add-category-btn" onclick="openCategoryModal()">
+                    <i class="fa-solid fa-plus"></i>
+                    <span>New Category</span>
+                </button>
+            </nav>
+
+            <div class="user-profile">
+                <div class="avatar">U</div>
+                <div class="user-info">
+                    <span class="name">User</span>
+                    <span class="role">Admin</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="top-bar glass-panel">
+                <div class="search-bar">
+                    <i class="fa-solid fa-search"></i>
+                    <input type="text" id="search-input" placeholder="Search documents...">
+                </div>
+                <div class="actions">
+                    <button class="icon-btn"><i class="fa-regular fa-bell"></i></button>
+                    <button class="primary-btn" onclick="openUploadModal()">
+                        <i class="fa-solid fa-cloud-arrow-up"></i>
+                        <span>Upload</span>
+                    </button>
+                </div>
+            </header>
+
+            <div class="content-area">
+                <div class="section-header">
+                    <h1 id="page-title">All Documents</h1>
+                    <div class="view-controls">
+                        <button class="icon-btn active" id="grid-view-btn"><i class="fa-solid fa-border-all"></i></button>
+                        <button class="icon-btn" id="list-view-btn"><i class="fa-solid fa-list"></i></button>
+                    </div>
+                </div>
+
+                <div id="document-grid" class="document-grid">
+                    <!-- Documents will be injected here -->
+                </div>
+                
+                <div id="empty-state" class="empty-state hidden">
+                    <img src="https://cdni.iconscout.com/illustration/premium/thumb/folder-is-empty-4064360-3363921.png" alt="Empty">
+                    <h3>No documents found</h3>
+                    <p>Upload a document to get started</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Upload Modal -->
+    <div id="upload-modal" class="modal-overlay hidden">
+        <div class="modal glass-panel">
+            <div class="modal-header">
+                <h2>Upload Document</h2>
+                <button class="close-btn" onclick="closeUploadModal()"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="drop-zone" id="drop-zone">
+                    <i class="fa-solid fa-cloud-arrow-up"></i>
+                    <p>Drag & Drop files here or <span>Browse</span></p>
+                    <input type="file" id="file-input" hidden>
+                </div>
+                <div class="form-group">
+                    <label>Document Name</label>
+                    <input type="text" id="doc-name" placeholder="e.g., Q4 Financial Report">
+                </div>
+                <div class="form-group">
+                    <label>Category</label>
+                    <select id="doc-category">
+                        <!-- Options injected via JS -->
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="secondary-btn" onclick="closeUploadModal()">Cancel</button>
+                <button class="primary-btn" onclick="saveDocument()">Save Document</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- New Category Modal -->
+    <div id="category-modal" class="modal-overlay hidden">
+        <div class="modal glass-panel">
+            <div class="modal-header">
+                <h2>New Category</h2>
+                <button class="close-btn" onclick="closeCategoryModal()"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Category Name</label>
+                    <input type="text" id="cat-name" placeholder="e.g., Legal, Personal">
+                </div>
+                <div class="form-group">
+                    <label>Color</label>
+                    <div class="color-picker" id="color-picker">
+                        <div class="color-option selected" data-color="#4f46e5" style="background: #4f46e5;"></div>
+                        <div class="color-option" data-color="#06b6d4" style="background: #06b6d4;"></div>
+                        <div class="color-option" data-color="#10b981" style="background: #10b981;"></div>
+                        <div class="color-option" data-color="#f59e0b" style="background: #f59e0b;"></div>
+                        <div class="color-option" data-color="#ef4444" style="background: #ef4444;"></div>
+                        <div class="color-option" data-color="#ec4899" style="background: #ec4899;"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="secondary-btn" onclick="closeCategoryModal()">Cancel</button>
+                <button class="primary-btn" onclick="saveCategory()">Create</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
